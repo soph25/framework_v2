@@ -113,7 +113,7 @@
 	  <div class="col-sm-3">
 	         <div class="form-group">
          <select name="region" class="form-control">
-		  <option value="0">- regions -</option>
+		  <option value="0">- lieux -</option>
 		  <option value="France">France</option>
     <optgroup label="AuvergneRhoneAlpes">
 	  <option value="AuvergneRhoneAlpes">- AuvergneRhoneAlpes -</option>
