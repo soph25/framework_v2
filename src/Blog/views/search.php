@@ -1,6 +1,6 @@
 <?php $this->insert('partials/header') ?>
 
-<div class="row">
+
  <h3><a href="<?= $router->generateUri('blog.index'); ?>">recherche par domaines</a>  </h3>
  
     <?php foreach ($posts as $post) : ?>
@@ -8,7 +8,7 @@
    
    
             
-      <p class="card-text">
+             <p class="card-text">
                 <?= $post->Fortitre; ?></br>
 				<?= $post->FORtype; ?></br>
 				<a href="<?= $post->Forurletidonisep; ?>" class="btn btn-danger">
@@ -27,7 +27,7 @@
 
     <?php endforeach; ?>
 
- </div>
+
 
 
 

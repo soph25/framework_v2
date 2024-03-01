@@ -2,19 +2,11 @@
 
 <ul>
    
-    <li <?=$this->uri('/news', 'class="selected"')?>><a href="/news">News</a></li>
+    <li <?=$this->uri('/domaines', 'class="selected"')?>><a href="/domaines">domaines</a></li>
     
 </ul>
 
+<?php echo $$post; ?>
 
- <h1><?= $post->name ;?></h1>
-<?= $post->created_at;?>
-
-<?php if (isset($post->image)) : ?>
-<img src="<?= $post->getThumb();?>" alt="<?= $post->getImageUrl() ;?>" width="20%">
-
-<?php endif; ?>
-
-<?= $post->content ;?>
 
 <?php $this->insert('partials/footer') ?>

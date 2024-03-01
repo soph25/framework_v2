@@ -32,6 +32,11 @@ p  {
 html[lang=fr] {
   hyphenate-dictionary:url(hyph_fr.dic);
 }
+a::before {
+  content: '🔗';
+}
+
+
 
 .pagination > li > span:active{
     background-color:#cce9f9;
@@ -103,6 +108,35 @@ a:active{
 .starthidden {
     display: none;
 }
+select[data-style] {
+   background-color: #ffc107;
+   
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 10px 24px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ffc107;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 13px;
+  background-color: green;
+  display: none;
+  overflow: hidden;
+}
+
 .fr-accordions-group {
     list-style-type: none;
 }
@@ -149,7 +183,13 @@ a:active{
     display: table;
     clear: both;
 }
-
+.parent {
+display: grid;
+grid-template-columns: 2fr repeat(3, 1fr);
+grid-template-rows: repeat(2, 2fr) repeat(2, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
 
 /* Style the footer */
 .footer {

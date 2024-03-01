@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Container\ContainerInterface;
+use Http\Factory\Guzzle\ResponseFactory;
 
 final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInterface
 {
@@ -36,7 +37,9 @@ final class CombinedMiddleware implements MiddlewareInterface, RequestHandlerInt
             return $this->process($request);
         } elseif (is_callable($middleware)) {
             $response = call_user_func_array($middleware, [$request, [$this, 'process']]);
+			
             if (is_string($response)) {
+				
                 return new Response(200, [], $response);
             }
             return $response;

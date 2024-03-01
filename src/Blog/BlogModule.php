@@ -4,6 +4,7 @@ namespace App\Blog;
 use App\Blog\Actions\HomeAction;
 use App\Blog\Actions\BlogAction;
 use App\Blog\Actions\SearchAction;
+use App\Blog\Actions\ApiAction;
 use App\Blog\Actions\AdminBlogAction;
 use App\Blog\Table\DomaineTable;
 use Framework\Module;
@@ -12,6 +13,7 @@ use League\Plates\Engine;
 use Framework\Router\Route;
 use Framework\Router;
 use Framework\Cache;
+use Framework\Helpers\ApiHelper;
 use Framework\Middleware\NotFoundMiddleware;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -29,7 +31,7 @@ class BlogModule extends Module
 
     private $routes = [];
 
-    public function __construct(string $path, string $prefix, Router $router, RenderInterface $renderer, ContainerInterface $container, DomaineTable $table, \Framework\Session\FlashService $flash, Cache $cache, PostUpload $upload)
+    public function __construct(string $path, string $prefix, Router $router, ApiHelper $helper, RenderInterface $renderer, ContainerInterface $container, DomaineTable $table, \Framework\Session\FlashService $flash, Cache $cache, PostUpload $upload)
     {
         //$renderer->addFolder('/home/sophie/monp/src/Blog', __DIR__ . '/views');
         //var_dump($path);
@@ -45,6 +47,7 @@ class BlogModule extends Module
         //$router->get($prefix, NotFoundMiddleware::class   , new BlogAction($router, $renderer, $container, $table, $cache), [] ,'blog.index');
         $router->get($prefix . '/{slug:[a-z\-0-9]+}-{id:[0-9]+}', new BlogAction($router, $renderer, $container, $table, $cache), 'blog.show');
 		$router->post($prefix . '/search', new SearchAction($router, $renderer, $container, $table), 'blog.search');
+		$router->get($prefix . '/api/v1/formations', new ApiAction($router, $renderer, $container, $helper), 'blog.api');
 		//$router->middleware();
         //if ($container->has('admin.prefix')) {
             //$prefix = $container->get('admin.prefix');

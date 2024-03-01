@@ -61,8 +61,7 @@ class SearchAction
 		
 		$sql = "SELECT Fortitre,Forindexationdomainewebonisep, ENSdepartement, Forurletidonisep,FORniveaudesortie,FORtype,Lieudenseignement,ENScodepostal,Ensurletidonisep
 		FROM formalycee_three WHERE (FORtype = :type AND ENSdepartement LIKE :region AND MATCH (Forindexationdomainewebonisep) AGAINST (:searchstr IN BOOLEAN MODE)) 
-		OR (FORtype = :type AND ENSregion LIKE :region AND MATCH (Forindexationdomainewebonisep) AGAINST (:searchstr IN BOOLEAN MODE)) 
-		OR (FORtype = :type AND MATCH (Forindexationdomainewebonisep) AGAINST (:searchstr IN BOOLEAN MODE)) ORDER BY ENScodepostal ASC";
+		OR (FORtype = :type AND ENSregion LIKE :region AND MATCH (Forindexationdomainewebonisep) AGAINST (:searchstr IN BOOLEAN MODE)) ORDER BY ENScodepostal ASC";
 
 
     $stmt = $pdo->prepare($sql);

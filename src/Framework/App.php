@@ -6,6 +6,7 @@ use DI\ContainerBuilder;
 use GuzzleHttp\Psr7\Response;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -62,9 +63,11 @@ class App implements MiddlewareInterface, RequestHandlerInterface
      */
     private $index = 0;
 
-    public function __construct($definition = null)
+    public function __construct(ResponseFactoryInterface $responseFactory, $definition = null)
     {
         $this->definition = $definition;
+		$this->responseFactory = $responseFactory;
+		
     }
     
     /**
